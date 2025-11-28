@@ -138,18 +138,17 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; font
     <!-- Slide 4 RSVP -->
 <section class="swiper-slide slide bg-white text-dark parallax-bg">
   <div class="container">
-    <h2 class="fw-bold text-primary">Konfirmasi Kehadiran</h2>
-    <div class="card card-rsvp mt-4 p-4 shadow">
-      <form>
-        <input class="form-control mb-3" id="undanganNama2" placeholder="Nama Anda" readonly>
-        
-        <div class="d-flex gap-2">
-          <button type="button" class="btn btn-success w-50" onclick="setRSVP('Hadir')">Hadir</button>
-          <button type="button" class="btn btn-danger w-50" onclick="setRSVP('Tidak Hadir')">Tidak Hadir</button>
-        </div>
-      </form>
-    </div>
-  </div>
+    <h2 class="fw-bold">Konfirmasi Kehadiran</h2>
+      <div class="card card-rsvp mt-4 p-4 bg-white text-dark shadow">
+        <form>
+          <input class="form-control mb-3" id="undanganNama2" placeholder="Nama Anda" readonly>
+
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-success w-50" onclick="setRSVP('Hadir')">Hadir</button>
+            <button type="button" class="btn btn-danger w-50" onclick="setRSVP('Tidak Hadir')">Tidak Hadir</button>
+          </div>
+        </form>
+      </div>
 </section>
 
 <section class="swiper-slide slide bg-white text-dark parallax-bg">
@@ -169,21 +168,13 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; font
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
 <script>
+// INIT SWIPER
 const swiper = new Swiper('.swiper', {
   direction:'vertical', speed:900, mousewheel:true,
   pagination:{ el:'.swiper-pagination', clickable:true },
 });
 
-// PARALLAX BACKGROUND GSAP
-swiper.on('slideChange', () => {
-  gsap.to(".parallax-bg", {
-    backgroundPositionY: `${swiper.activeIndex * 20}px`,
-    duration: 1.6,
-    ease: "power2.out"
-  });
-});
-
-/* READ URL PARAM: ?to= */
+// URL PARAMETER
 const urlParams = new URLSearchParams(window.location.search);
 const guestName = urlParams.get('to');
 
@@ -194,75 +185,66 @@ if (guestName) {
 }
 
 function openInvitation() {
-  const audio = document.getElementById("bg-music");
-  audio.play();
+  document.getElementById("bg-music").play();
   swiper.slideNext();
 }
 
-/* CONFETTI EFFECT */
-function confettiShow() {
-  const duration = 1.8 * 1000;
-  const end = Date.now() + duration;
+// API ENDPOINT
+const API_URL = "https://script.google.com/macros/s/AKfycbxmzJF_1uMNMOI2OuLUjHc_QEEbVVbPMYoimhE_Pz76Tl1PGk9ZNKHbz_tFhDZdgHQ/exec";
 
+// SEND RSVP
+function setRSVP(status) {
+  let nama = document.getElementById("undanganNama2").value.trim();
+  if (!nama) return alert("Silakan isi nama");
+
+  fetch(API_URL, {
+    method:"POST",
+    body: JSON.stringify({ nama:nama, status:status })
+  })
+  .then(r => r.json())
+  .then(res => {
+    showConfetti();
+    loadDataRSVP();
+    swiper.slideNext();
+  })
+  .catch(err => alert("Error: " + err));
+}
+
+// LOAD FROM SHEET
+function loadDataRSVP() {
+  fetch(API_URL)
+    .then(res => res.json())
+    .then(data => {
+      let html = "";
+      data.forEach((item,i) => {
+        let badge = item.status === "Hadir"
+          ? `<span class="badge bg-success">Hadir</span>`
+          : `<span class="badge bg-danger">Tidak Hadir</span>`;
+        html += `
+        <li class="list-group-item d-flex justify-content-between">
+          <span><b>${i+1}.</b> ${item.nama}</span>
+          ${badge}
+        </li>`;
+      });
+
+      const el = document.getElementById("daftarRSVP");
+      el.innerHTML = html;
+      el.classList.add("flash");
+      setTimeout(()=>el.classList.remove("flash"),600);
+    });
+}
+loadDataRSVP();
+
+// CONFETTI
+function showConfetti() {
+  const end = Date.now() + 1500;
   (function frame() {
-    confetti({ particleCount: 8, spread: 80, origin: { y: 0.9 } });
+    confetti({ particleCount:8, spread:70, origin:{y:0.9} });
     if (Date.now() < end) requestAnimationFrame(frame);
   })();
 }
 
-let daftarKonfirmasi = JSON.parse(localStorage.getItem("rsvpList")) || [];
-
-// RENDER LIST with numbering
-function loadDataRSVP() {
-  let list = "";
-  daftarKonfirmasi.forEach((item, index) => {
-    let badge = item.status === "Hadir"
-      ? `<span class="badge bg-success">Hadir</span>`
-      : `<span class="badge bg-danger">Tidak Hadir</span>`;
-
-    list += `<li class="list-group-item d-flex justify-content-between align-items-center">
-      <span><b>${index+1}.</b> ${item.nama}</span>
-      ${badge}
-    </li>`;
-  });
-
-  const daftarEl = document.getElementById("daftarRSVP");
-  daftarEl.innerHTML = list;
-
-  // flash animation
-  daftarEl.classList.add("flash");
-  setTimeout(() => daftarEl.classList.remove("flash"), 700);
-
-  // GSAP entry animation
-  gsap.from("#daftarRSVP li", {
-    opacity:0, y:20, duration:0.5, stagger:0.05, ease:"power2.out"
-  });
-}
-loadDataRSVP();
-
-// Save attendance
-function setRSVP(status) {
-  let nama = document.getElementById("undanganNama2").value.trim();
-  if (!nama) { alert("Silakan isi nama terlebih dahulu"); return; }
-
-  const index = daftarKonfirmasi.findIndex(item => item.nama.toLowerCase() === nama.toLowerCase());
-
-  if (index !== -1) {
-    daftarKonfirmasi[index].status = status;
-  } else {
-    daftarKonfirmasi.push({ nama, status });
-  }
-
-  localStorage.setItem("rsvpList", JSON.stringify(daftarKonfirmasi));
-
-  loadDataRSVP();
-  confettiShow();
-  swiper.slideNext();
-}
-
-/* GSAP Intro animation */
 gsap.from("#judul", {scale:0.4, opacity:0, duration:1.5, ease:"elastic.out(1,0.4)"});
-gsap.from(".btn-invite", {y:40, opacity:0, duration:1.2});
 </script>
 
 
