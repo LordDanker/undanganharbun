@@ -18,7 +18,7 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; font
 
 .bg1 { background:url('hb1.png') center/cover; color:white; }
 .bg2 { background:white; color:#0d6efd; }
-.bg3 { background:url('hayu.png') center/cover; color:white; }
+.bg3 { background:url('hb2.png') center/cover; color:white; }
 .bg4 { background:#0d6efd; color:white; }
 .bg5 { background:url('humming.png') center/cover; color:white; }
 .overlay { background:rgba(0,0,0,0.45); width:100%; height:100%; display:flex; justify-content:center; align-items:center; flex-direction:column; }
@@ -183,7 +183,7 @@ button.btn-light {
     <div class="maps-container mb-4">
       <iframe 
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.8810230825657!2d107.61808441349183!3d-6.904828397956253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e64bab32ae69%3A0x762cf46343d39f96!2sHummingbird%20Eatery%20%26%20Space!5e0!3m2!1sen!2sid!4v1764304185110!5m2!1sen!2sid"
-        allowfullscreen loading="lazy">
+        allowfullscreen>
       </iframe>
     </div>
 
@@ -192,11 +192,11 @@ button.btn-light {
     <p class="venue-time fw-bold mt-2">07 Desember 2025<br>16.00–20.00 WIB</p>
 
     <p class="mt-3 small">
-      🎁 Membawa kado maksimal Rp 100.000 menggunakan <b>sampul coklat</b> <br>
+      🎁 Membawa kado <br>maksimal Senilai Rp 100.000<br> menggunakan <b>sampul coklat</b> <br>
       🚫 Mohon tidak membawa keluarga
     </p>
 
-    <button class="btn btn-light btn-lg shadow-sm mt-3" onclick="swiper.slideNext()">
+    <button class="btn btn-light" onclick="swiper.slideNext()">
       Konfirmasi Kehadiran
     </button>
 
@@ -208,12 +208,12 @@ button.btn-light {
 
 
     <!-- Slide 4 RSVP -->
-<section class="swiper-slide slide bg-white text-dark parallax-bg">
+<section class="swiper-slide slide bg-white text-dark bg3 parallax-bg">
   <div class="container">
     <h2 class="fw-bold">Konfirmasi Kehadiran</h2>
       <div class="card card-rsvp mt-4 p-4 bg-white text-dark shadow">
         <form>
-          <input class="form-control mb-3" id="undanganNama2" placeholder="Nama Anda" readonly>
+          <input class="form-control mb-3 text-center fw-bold" id="undanganNama2" placeholder="Nama Anda" readonly>
 
           <div class="d-flex gap-2">
             <button type="button" class="btn btn-success w-50" onclick="setRSVP('Hadir')">Hadir</button>
