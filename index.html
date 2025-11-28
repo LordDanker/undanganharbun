@@ -157,7 +157,7 @@ button.btn-light {
         <p>Kami mengundang untuk hadir dalam acara<br> 
           Medical Gathering dan Rapat Kolaborasi</p>
         <p>Agenda Acara</p>
-        <p>1. Update Data Satu Sehat SISMDK</p>
+        <p>1. Update Data Satu Sehat SISDMK</p>
         <p>2. Rencana Strategis Komite Medis</p>
         <p>3. Capaian & Target RS 2025-2026</p>
         <p>4. Mini Games, Tukar Kado, Doorprize</p>
@@ -170,68 +170,59 @@ button.btn-light {
     </section>
 
    <!-- Slide 3: Detail -->
-<section class="swiper-slide slide bg4 parallax-bg d-flex justify-content-center align-items-center text-center p-4">
-
-  <div class="venue-card">
-    
-    <!-- Google Maps Button -->
-    <a href="https://maps.app.goo.gl/R3wmXjoArWDMVwNL8" target="_blank" class="btn btn-outline-light btn-sm mb-3 shadow-sm">
-      📍 Buka di Google Maps
-    </a>
-
-    <!-- Map Responsive -->
-    <div class="maps-container mb-4">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.8810230825657!2d107.61808441349183!3d-6.904828397956253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e64bab32ae69%3A0x762cf46343d39f96!2sHummingbird%20Eatery%20%26%20Space!5e0!3m2!1sen!2sid!4v1764304185110!5m2!1sen!2sid"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-    <h2 class="venue-title">Hummingbird Eatery & Space</h2>
-    <p class="venue-address">Jl. Progo No.16, Citarum, Bandung Wetan, Bandung</p>
-    <p class="venue-time fw-bold mt-2">07 Desember 2025<br>16.00–20.00 WIB</p>
-
-    <p class="mt-3 small">
-      🎁 Membawa kado <br>maksimal Senilai Rp 100.000<br> menggunakan <b>sampul coklat</b> <br>
-      🚫 Mohon tidak membawa keluarga
-    </p>
-
-    <button class="btn btn-light" onclick="swiper.slideNext()">
-      Konfirmasi Kehadiran
-    </button>
-
-  </div>
-
-</section>
+    <section class="swiper-slide slide bg4 parallax-bg d-flex justify-content-center align-items-center text-center p-4">
+      <div class="venue-card">
+        <a href="https://maps.app.goo.gl/R3wmXjoArWDMVwNL8" target="_blank" class="btn btn-outline-light btn-sm mb-3 shadow-sm">
+          📍 Buka di Google Maps
+        </a>
+        <div class="maps-container mb-4">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.8810230825657!2d107.61808441349183!3d-6.904828397956253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e64bab32ae69%3A0x762cf46343d39f96!2sHummingbird%20Eatery%20%26%20Space!5e0!3m2!1sen!2sid!4v1764304185110!5m2!1sen!2sid"
+            allowfullscreen>
+          </iframe>
+        </div>
+      
+        <h2 class="venue-title">Hummingbird Eatery & Space</h2>
+        <p class="venue-address">Jl. Progo No.16, Citarum, Bandung Wetan, Bandung</p>
+        <p class="venue-time fw-bold mt-2">07 Desember 2025<br>16.00–20.00 WIB</p>
+      
+        <p class="mt-3 small">
+          🎁 Membawa kado <br>maksimal Senilai Rp 100.000<br> menggunakan <b>sampul coklat</b> <br>
+          🚫 Mohon tidak membawa keluarga
+        </p>
+      
+        <button class="btn btn-light" onclick="swiper.slideNext()">
+          Konfirmasi Kehadiran
+        </button>
+      </div>
+    </section>
 
 
 
 
     <!-- Slide 4 RSVP -->
-<section class="swiper-slide slide bg-white text-dark bg3 parallax-bg">
-  <div class="container">
-    <h2 class="fw-bold">Konfirmasi Kehadiran</h2>
-      <div class="card card-rsvp mt-4 p-4 bg-white text-dark shadow">
-        <form>
-          <input class="form-control mb-3 text-center fw-bold" id="undanganNama2" placeholder="Nama Anda" readonly>
-
-          <div class="d-flex gap-2">
-            <button type="button" class="btn btn-success w-50" onclick="setRSVP('Hadir')">Hadir</button>
-            <button type="button" class="btn btn-danger w-50" onclick="setRSVP('Tidak Hadir')">Tidak Hadir</button>
+    <section class="swiper-slide slide bg-white text-dark bg3 parallax-bg">
+      <div class="container">
+        <h2 class="fw-bold">Konfirmasi Kehadiran</h2>
+          <div class="card card-rsvp mt-4 p-4 bg-white text-dark shadow">
+            <form>
+              <input class="form-control mb-3 text-center fw-bold" id="undanganNama2" placeholder="Nama Anda" readonly>
+            
+              <div class="d-flex gap-2">
+                <button type="button" class="btn btn-success w-50" onclick="setRSVP('Hadir')">Hadir</button>
+                <button type="button" class="btn btn-danger w-50" onclick="setRSVP('Tidak Hadir')">Tidak Hadir</button>
+              </div>
+            </form>
           </div>
-        </form>
+    </section>
+
+    <!-- Slide 5 List RSVP -->
+    <section class="swiper-slide slide bg-white text-dark parallax-bg">
+      <div class="container">
+        <h2 class="fw-bold text-primary">Daftar Konfirmasi</h2>  
+        <ul id="daftarRSVP" class="list-group mt-4" style="max-width:450px;margin:auto;"></ul>
       </div>
-</section>
-
-<section class="swiper-slide slide bg-white text-dark parallax-bg">
-  <div class="container">
-    <h2 class="fw-bold text-primary">Daftar Konfirmasi</h2>
-
-    <ul id="daftarRSVP" class="list-group mt-4" style="max-width:450px;margin:auto;"></ul>
-    
-    <!-- <button class="btn btn-outline-danger mt-3" onclick="resetRSVP()">Reset Daftar</button> -->
-  </div>
-</section>
+    </section>
 
   </div>
   <div class="swiper-pagination"></div>
