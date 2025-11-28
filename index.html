@@ -17,150 +17,55 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; font
 .slide { display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; }
 
 .bg1 { background:url('hb1.png') center/cover; color:white; }
-.bg2 { background:white; color:#0d6efd; }
-.bg3 { background:url('hayu.png') center/cover; color:white; }
 .bg4 { background:#0d6efd; color:white; }
-.bg5 { background:url('humming.png') center/cover; color:white; }
-.overlay { background:rgba(0,0,0,0.45); width:100%; height:100%; display:flex; justify-content:center; align-items:center; flex-direction:column; }
 
 .card-rsvp { max-width:420px; margin:auto; border-radius:15px; }
 
-.parallax-bg {
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-  transition: background-position 0.4s ease-out;
+#daftarRSVP li {
+  display:flex; justify-content:space-between; padding:12px; font-size:1rem;
+  border-bottom:1px solid rgba(0,0,0,0.15);
 }
 
-#attendance-list li {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 15px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  font-size: 1rem;
-}
-#attendance-list .number {
-  font-weight: bold;
-  width: 30px;
-}
-#attendance-list .name {
-  flex: 1;
-  text-transform: capitalize;
-}
-#attendance-list .status {
-  font-weight: bold;
-  padding: 3px 8px;
-  border-radius: 12px;
-}
-.status.hadir {
-  background: rgba(0,255,0,0.3);
-}
-.status.tidakhadir {
-  background: rgba(255,0,0,0.3);
-}
-
-
-/* invitation button */
-.btn-invite {
-  background:#0d6efd; color:white; border-radius:40px; padding:8px 24px; font-weight:bold;
-  animation:pulse 2s infinite;
-}
-@keyframes pulse { 0%{transform:scale(1)}50%{transform:scale(1.10)}100%{transform:scale(1)} }
-
-.flash { animation: flashAnim 0.8s; }
-@keyframes flashAnim { 0%{background:#ffeb3b}100%{background:white} }
-
-
+.flash { animation: flashAnim .7s; }
+@keyframes flashAnim { 0%{background:#ff0}100%{background:white} }
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
 <audio id="bg-music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-
-
-
-<!-- SWIPER -->
 <div class="swiper">
   <div class="swiper-wrapper">
 
-    <!-- Slide 1: Opening -->
-    <section class="swiper-slide slide bg1 parallax-bg">
-      <div class="overlay">
-        <h4>Medical Gathering</h4>
-        <h1 class="display-4 fw-bold" id="judul">Harapan Bunda Bandung</h1>
-        <h4>Sinergi & Kolaborasi</h4>
-        <p class="mt-3" id="undanganNama"></p>
-        <button class="btn-invite mt-4" onclick="openInvitation()">Buka Undangan</button>
+    <section class="swiper-slide slide bg1">
+      <h4>Medical Gathering</h4>
+      <h1 class="display-4 fw-bold" id="judul">Harapan Bunda Bandung</h1>
+      <h4>Sinergi & Kolaborasi</h4>
+      <p class="mt-3" id="undanganNama"></p>
+      <button class="btn btn-light mt-4" onclick="openInvitation()">Buka Undangan</button>
+    </section>
+
+    <section class="swiper-slide slide bg4">
+      <h2 class="fw-bold">Konfirmasi Kehadiran</h2>
+      <div class="card card-rsvp mt-4 p-4 bg-white text-dark shadow">
+        <form>
+          <input class="form-control mb-3" id="undanganNama2" placeholder="Nama Anda" readonly>
+
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-success w-50" onclick="setRSVP('Hadir')">Hadir</button>
+            <button type="button" class="btn btn-danger w-50" onclick="setRSVP('Tidak Hadir')">Tidak Hadir</button>
+          </div>
+        </form>
       </div>
     </section>
 
-    <!-- Slide 2 -->
-    <section class="swiper-slide slide bg4 parallax-bg">
-      <div class="overlay">
-        <h2 class="fw-bold">Gathering dan Rapat Kolaborasi</b></h2>
-        <p>Kami mengundang untuk hadir dalam acara<br> 
-          Medical Gathering dan Rapat Kolaborasi</p>
-        <p>Agenda Acara</p>
-        <p>1. Update Data Satu Sehat SISMDK</p>
-        <p>2. Rencana Strategis Komite Medis</p>
-        <p>3. Capaian & Target RS 2025-2026</p>
-        <p>4. Mini Games, Tukar Kado, Doorprize</p>
-        
-        <button class="btn btn-light" onclick="swiper.slideNext()">Waktu dan Tempat</button>
-      </div>
+    <section class="swiper-slide slide bg-white text-dark">
+      <h2 class="fw-bold text-primary">Daftar Konfirmasi</h2>
+      <ul id="daftarRSVP" class="list-group mt-4" style="max-width:450px;margin:auto;"></ul>
     </section>
-
-    <!-- Slide 3: Detail -->
-    <section class="swiper-slide slide bg4 parallax-bg">
-              <a href="https://maps.app.goo.gl/R3wmXjoArWDMVwNL8" target="_blank" class="btn btn-outline-primary btn-sm mb-3">
-          Buka di Google Maps
-        </a>
-
-        <!-- EMBED MAPS RESPONSIVE -->
-        <div class="maps-container">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.8810230825657!2d107.61808441349183!3d-6.904828397956253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e64bab32ae69%3A0x762cf46343d39f96!2sHummingbird%20Eatery%20%26%20Space!5e0!3m2!1sen!2sid!4v1764304185110!5m2!1sen!2sid" allowfullscreen loading="lazy"></iframe>
-        </div>
-      <h2 class="fw-bold mb-3">Hummingbird Eatery & Space</h2>
-      <p>Jl. Progo No.16, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40115</p>
-      <p>07 Desember 2025 | 16.00-20.00 WIB</p>
-
-      <p class="mt-2">🎁 Kado Max 100rb, Sampul Coklat<br>🚫 Tidak Membawa Keluarga</p>
-      <button class="btn btn-light mt-3" onclick="swiper.slideNext()">Konfirmasi Kehadiran</button>
-    </section>
-
-
-
-    <!-- Slide 4 RSVP -->
-<section class="swiper-slide slide bg-white text-dark parallax-bg">
-  <div class="container">
-    <h2 class="fw-bold text-primary">Konfirmasi Kehadiran</h2>
-    <div class="card card-rsvp mt-4 p-4 shadow">
-      <form>
-        <input class="form-control mb-3" id="undanganNama2" placeholder="Nama Anda" readonly>
-        
-        <div class="d-flex gap-2">
-          <button type="button" class="btn btn-success w-50" onclick="setRSVP('Hadir')">Hadir</button>
-          <button type="button" class="btn btn-danger w-50" onclick="setRSVP('Tidak Hadir')">Tidak Hadir</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
-
-<section class="swiper-slide slide bg-white text-dark parallax-bg">
-  <div class="container">
-    <h2 class="fw-bold text-primary">Daftar Konfirmasi</h2>
-
-    <ul id="daftarRSVP" class="list-group mt-4" style="max-width:450px;margin:auto;"></ul>
-    
-    <!-- <button class="btn btn-outline-danger mt-3" onclick="resetRSVP()">Reset Daftar</button> -->
-  </div>
-</section>
 
   </div>
   <div class="swiper-pagination"></div>
@@ -169,21 +74,13 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; font
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
 <script>
+// INIT SWIPER
 const swiper = new Swiper('.swiper', {
   direction:'vertical', speed:900, mousewheel:true,
   pagination:{ el:'.swiper-pagination', clickable:true },
 });
 
-// PARALLAX BACKGROUND GSAP
-swiper.on('slideChange', () => {
-  gsap.to(".parallax-bg", {
-    backgroundPositionY: `${swiper.activeIndex * 20}px`,
-    duration: 1.6,
-    ease: "power2.out"
-  });
-});
-
-/* READ URL PARAM: ?to= */
+// URL PARAMETER
 const urlParams = new URLSearchParams(window.location.search);
 const guestName = urlParams.get('to');
 
@@ -194,77 +91,67 @@ if (guestName) {
 }
 
 function openInvitation() {
-  const audio = document.getElementById("bg-music");
-  audio.play();
+  document.getElementById("bg-music").play();
   swiper.slideNext();
 }
 
-/* CONFETTI EFFECT */
-function confettiShow() {
-  const duration = 1.8 * 1000;
-  const end = Date.now() + duration;
+// API ENDPOINT
+const API_URL = "https://script.google.com/macros/s/AKfycbxmzJF_1uMNMOI2OuLUjHc_QEEbVVbPMYoimhE_Pz76Tl1PGk9ZNKHbz_tFhDZdgHQ/exec";
 
+// SEND RSVP
+function setRSVP(status) {
+  let nama = document.getElementById("undanganNama2").value.trim();
+  if (!nama) return alert("Silakan isi nama");
+
+  fetch(API_URL, {
+    method:"POST",
+    body: JSON.stringify({ nama:nama, status:status })
+  })
+  .then(r => r.json())
+  .then(res => {
+    showConfetti();
+    loadDataRSVP();
+    swiper.slideNext();
+  })
+  .catch(err => alert("Error: " + err));
+}
+
+// LOAD FROM SHEET
+function loadDataRSVP() {
+  fetch(API_URL)
+    .then(res => res.json())
+    .then(data => {
+      let html = "";
+      data.forEach((item,i) => {
+        let badge = item.status === "Hadir"
+          ? `<span class="badge bg-success">Hadir</span>`
+          : `<span class="badge bg-danger">Tidak Hadir</span>`;
+        html += `
+        <li class="list-group-item d-flex justify-content-between">
+          <span><b>${i+1}.</b> ${item.nama}</span>
+          ${badge}
+        </li>`;
+      });
+
+      const el = document.getElementById("daftarRSVP");
+      el.innerHTML = html;
+      el.classList.add("flash");
+      setTimeout(()=>el.classList.remove("flash"),600);
+    });
+}
+loadDataRSVP();
+
+// CONFETTI
+function showConfetti() {
+  const end = Date.now() + 1500;
   (function frame() {
-    confetti({ particleCount: 8, spread: 80, origin: { y: 0.9 } });
+    confetti({ particleCount:8, spread:70, origin:{y:0.9} });
     if (Date.now() < end) requestAnimationFrame(frame);
   })();
 }
 
-let daftarKonfirmasi = JSON.parse(localStorage.getItem("rsvpList")) || [];
-
-// RENDER LIST with numbering
-function loadDataRSVP() {
-  let list = "";
-  daftarKonfirmasi.forEach((item, index) => {
-    let badge = item.status === "Hadir"
-      ? `<span class="badge bg-success">Hadir</span>`
-      : `<span class="badge bg-danger">Tidak Hadir</span>`;
-
-    list += `<li class="list-group-item d-flex justify-content-between align-items-center">
-      <span><b>${index+1}.</b> ${item.nama}</span>
-      ${badge}
-    </li>`;
-  });
-
-  const daftarEl = document.getElementById("daftarRSVP");
-  daftarEl.innerHTML = list;
-
-  // flash animation
-  daftarEl.classList.add("flash");
-  setTimeout(() => daftarEl.classList.remove("flash"), 700);
-
-  // GSAP entry animation
-  gsap.from("#daftarRSVP li", {
-    opacity:0, y:20, duration:0.5, stagger:0.05, ease:"power2.out"
-  });
-}
-loadDataRSVP();
-
-// Save attendance
-function setRSVP(status) {
-  let nama = document.getElementById("undanganNama2").value.trim();
-  if (!nama) { alert("Silakan isi nama terlebih dahulu"); return; }
-
-  const index = daftarKonfirmasi.findIndex(item => item.nama.toLowerCase() === nama.toLowerCase());
-
-  if (index !== -1) {
-    daftarKonfirmasi[index].status = status;
-  } else {
-    daftarKonfirmasi.push({ nama, status });
-  }
-
-  localStorage.setItem("rsvpList", JSON.stringify(daftarKonfirmasi));
-
-  loadDataRSVP();
-  confettiShow();
-  swiper.slideNext();
-}
-
-/* GSAP Intro animation */
 gsap.from("#judul", {scale:0.4, opacity:0, duration:1.5, ease:"elastic.out(1,0.4)"});
-gsap.from(".btn-invite", {y:40, opacity:0, duration:1.2});
 </script>
-
 
 </body>
 </html>
