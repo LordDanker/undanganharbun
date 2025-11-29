@@ -109,6 +109,30 @@ button.btn-light {
   font-weight: 600;
 }
 
+.rsvp-box {
+  max-width: 900px;
+  height: 80vh;             /* box tinggi tetap, scroll di dalam */
+  margin: 0 auto;
+  overflow-y: auto;
+  border-radius: 16px;
+  padding: 15px;
+  background: #ffffff;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+}
+
+.list-group li {
+  font-size: 16px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  background: #e9f2ff;
+  color: #0d47a1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
 
 
 /* invitation button */
@@ -217,10 +241,15 @@ button.btn-light {
     </section>
 
     <!-- Slide 5 List RSVP -->
-    <section class="swiper-slide slide bg-white text-dark parallax-bg">
-      <div class="container">
-        <h2 class="fw-bold text-primary">Daftar Konfirmasi</h2>  
-        <ul id="daftarRSVP" class="list-group mt-4" style="max-width:450px;margin:auto;"></ul>
+   <section class="swiper-slide slide bg-white text-dark" style="padding:200px 30px;">
+      <div class="container text-center">
+      
+        <h2 class="fw-bold text-primary mb-3">Daftar Konfirmasi Kehadiran</h2>
+      
+        <div class="rsvp-box">
+          <ul id="daftarRSVP" class="list-group"></ul>
+        </div>
+      
       </div>
     </section>
 
@@ -253,7 +282,7 @@ function openInvitation() {
 }
 
 // API ENDPOINT
-const API_URL = "https://script.google.com/macros/s/AKfycbwFUD4FouIR4QYTKNSKeuep2m9BQxa4EPdr7SZSBzHikT6bFm-69s9aP6uuAMdY4IAd/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxLn_LELoBWopjXMCoG4mitdVUboA87682imfWCvA3wRXIiFTKLB-Y3t78kw9w7B9h5/exec";
 
 // SEND RSVP
 function setRSVP(status) {
@@ -307,8 +336,13 @@ function showConfetti() {
   })();
 }
 
+
+
 gsap.from("#judul", {scale:0.4, opacity:0, duration:1.5, ease:"elastic.out(1,0.4)"});
 </script>
+
+
+
 
 
 </body>
