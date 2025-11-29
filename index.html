@@ -111,13 +111,39 @@ button.btn-light {
 
 .rsvp-box {
   max-width: 900px;
-  height: 80vh;             /* box tinggi tetap, scroll di dalam */
-  margin: 0 auto;
-  overflow-y: auto;
-  border-radius: 16px;
-  padding: 15px;
+  max-height: 600px;      /* batasi tinggi agar tidak memanjang */
+  overflow-y: auto;       /* scroll otomatis */
+  padding: 5px 0;
+  border-radius: 15px;
+  border: 2px solid #e5e5e5;
   background: #ffffff;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  padding: 10px 15px;
+  border: none;
+  border-bottom: 1px solid #eee;
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+.rsvp-name {
+  flex: 1;
+  word-wrap: break-word;
+  white-space: normal;
+  text-align: left;
+}
+
+.list-group-item:hover {
+  background: #f8fbff;
+  transition: 0.3s;
 }
 
 .list-group li {
@@ -241,12 +267,12 @@ button.btn-light {
     </section>
 
     <!-- Slide 5 List RSVP -->
-   <section class="swiper-slide slide bg-white text-dark" style="padding:200px 30px;">
-      <div class="container text-center">
+   <section class="swiper-slide slide bg-white text-dark">
+      <div class="container text-center" style="max-width:600px;padding:120px 20px;">
+
+        <h2 class="fw-bold text-primary mb-4">Daftar Konfirmasi Kehadiran</h2>
       
-        <h2 class="fw-bold text-primary mb-3">Daftar Konfirmasi Kehadiran</h2>
-      
-        <div class="rsvp-box">
+        <div class="rsvp-box mx-auto">
           <ul id="daftarRSVP" class="list-group"></ul>
         </div>
       
