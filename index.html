@@ -17,10 +17,11 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; font
 .slide { display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; }
 
 .bg1 { background:url('hb1.png') center/cover; color:white; }
-.bg2 { background:white; color:#0d6efd; }
+.bg2 { background:white; color:#ead976; }
 .bg3 { background:url('hb2.png') center/cover; color:white; }
-.bg4 { background:#0d6efd; color:white; }
+.bg4 { background:#ead976; color:white; }
 .bg5 { background:url('humming.png') center/cover; color:white; }
+.bg6 { background:url('hb3.png') center/cover; color:white; }
 .overlay { background:rgba(0,0,0,0.45); width:100%; height:100%; display:flex; justify-content:center; align-items:center; flex-direction:column; }
 
 .card-rsvp { max-width:420px; margin:auto; border-radius:15px; }
@@ -163,7 +164,7 @@ button.btn-light {
 
 /* invitation button */
 .btn-invite {
-  background:#0d6efd; color:white; border-radius:40px; padding:8px 24px; font-weight:bold;
+  background:#c57308; color:white; border-radius:40px; padding:8px 24px; font-weight:bold;
   animation:pulse 2s infinite;
 }
 @keyframes pulse { 0%{transform:scale(1)}50%{transform:scale(1.10)}100%{transform:scale(1)} }
@@ -192,9 +193,9 @@ button.btn-light {
     <!-- Slide 1: Opening -->
     <section class="swiper-slide slide bg1 parallax-bg">
       <div class="overlay">
-        <h4>Medical Gathering</h4>
+        <h4>Harbun Connect Fest</h4>
         <h1 class="display-4 fw-bold" id="judul">Harapan Bunda Bandung</h1>
-        <h4>Sinergi & Kolaborasi</h4>
+        <h4>Halal Bihalal sembari Festival</h4>
         <p class="mt-3" id="undanganNama"></p>
         <button class="btn-invite mt-4" onclick="openInvitation()">Buka Undangan</button>
       </div>
@@ -203,45 +204,50 @@ button.btn-light {
     <!-- Slide 2 -->
     <section class="swiper-slide slide bg4 parallax-bg">
       <div class="overlay">
-        <h2 class="fw-bold">Gathering dan Rapat Kolaborasi</b></h2>
+        <h2 class="fw-bold">Rundown Harbun Connect Fest</b></h2>
         <p>Kami mengundang untuk hadir dalam acara<br> 
-          Medical Gathering dan Rapat Kolaborasi</p>
+          Halal Bihalal sembari Festival</p>
         <p>Agenda Acara</p>
-        <p>1. Update Data Satu Sehat SISDMK</p>
-        <p>2. Rencana Strategis Komite Medis</p>
-        <p>3. Capaian & Target RS 2025-2026</p>
-        <p>4. Mini Games, Tukar Kado, Doorprize</p>
+        <p>1. ✨ Tausiah & Halal Bi Halal</p>
+        <p>2. 🎭 Festival Kostum</p>
+        <p>3. 🍔 Food Festival Booth</p>
+        <p>4. 🎸 Akustik Performance</p>
+        <p>5. 🎁 Door Prize</p>
+        <p>6. 🎉 Pesta Pora</p>
 
-        <p>____________________________________</p>
-        <p><b>Harap Membawa kado<br>maksimal senilai Rp 100.000<br> menggunakan sampul coklat</b></p>
-        
-        <button class="btn btn-light" onclick="swiper.slideNext()">Waktu dan Tempat</button>
+        <p class="mt-3 medium-emphasis">
+          Dress Code: COLORFULL 🌈
+        </p>
+
+                
+        <button class="btn btn-invite" onclick="swiper.slideNext()">Waktu dan Tempat</button>
       </div>
+    </section>
+
+    <!-- Section 2.2: Kriteria Lomba -->
+    <section class="swiper-slide slide bg6 parallax-bg">
+      
     </section>
 
    <!-- Slide 3: Detail -->
     <section class="swiper-slide slide bg4 parallax-bg d-flex justify-content-center align-items-center text-center p-4">
       <div class="venue-card">
-        <a href="https://maps.app.goo.gl/R3wmXjoArWDMVwNL8" target="_blank" class="btn btn-outline-light btn-sm mb-3 shadow-sm">
+        <a href="https://maps.app.goo.gl/uGjLL8k9JnytVFZR9" target="_blank" class="btn btn-outline-light btn-sm mb-3 shadow-sm">
           📍 Buka di Google Maps
         </a>
         <div class="maps-container mb-4">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.8810230825657!2d107.61808441349183!3d-6.904828397956253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e64bab32ae69%3A0x762cf46343d39f96!2sHummingbird%20Eatery%20%26%20Space!5e0!3m2!1sen!2sid!4v1764304185110!5m2!1sen!2sid"
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d990.1132706027961!2d107.66198521230312!3d-6.955759558256439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e825ddaa500d%3A0x38c5353a3b6a52cb!2sRSIA%20Harapan%20Bunda%20Bandung!5e0!3m2!1sen!2sid!4v1776138666102!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       
-        <h2 class="venue-title">Hummingbird Eatery & Space</h2>
-        <p class="venue-address">Jl. Progo No.16, Citarum, Bandung Wetan, Bandung</p>
-        <p class="venue-time fw-bold mt-2">07 Desember 2025<br>16.00–20.00 WIB</p>
+        <h2 class="venue-title">Areal Parkir RSIA Harapan Bunda Bandung</h2>
+        <p class="venue-address">Jl. Pluto Raya Blok C, Margahayu Raya</p>
+        <p class="venue-time fw-bold mt-2">19 September 2026<br>08.30 WIB – Selesai</p>
       
-        <p class="mt-3 small">
-          🎁 Membawa kado <br>maksimal Senilai Rp 100.000<br> menggunakan <b>sampul coklat</b> <br>
-          🚫 Mohon tidak membawa keluarga
+        <p class="mt-3 medium-emphasis">
+          Dress Code : COLORFULL
         </p>
       
-        <button class="btn btn-light" onclick="swiper.slideNext()">
+        <button class="btn btn-invite" onclick="swiper.slideNext()">
           Konfirmasi Kehadiran
         </button>
       </div>
@@ -256,7 +262,7 @@ button.btn-light {
         <h2 class="fw-bold">Konfirmasi Kehadiran</h2>
           <div class="card card-rsvp mt-4 p-4 bg-white text-dark shadow">
             <form>
-              <input class="form-control mb-3 text-center fw-bold" id="undanganNama2" placeholder="Nama Anda" readonly>
+              <input class="form-control mb-3 text-center fw-bold" id="undanganNama2" placeholder="Nama Anda">
             
               <div class="d-flex gap-2">
                 <button type="button" class="btn btn-success w-50" onclick="setRSVP('Hadir')">Hadir</button>
